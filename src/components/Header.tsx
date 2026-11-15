@@ -42,7 +42,7 @@ export function Header() {
           <div className="container-page flex flex-col gap-2 py-4 text-[15px]">
             {links.map((l) => (
               <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="py-1.5">
-                {l.label}
+                {l.label}→
               </a>
             ))}
           </div>
@@ -51,3 +51,4 @@ export function Header() {
     </header>
   );
 }
+
