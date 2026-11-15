@@ -23,7 +23,7 @@ export default function Home() {
 
       <main className="grid">
         {DEMOS.map((demo) => (
-          <a key={demo.slug} className="card" href={`/${demo.slug}`}>
+          <a key={demo.slug} className="card" href={demo.url ?? `/${demo.slug}`}>
             <div className="card-head">
               <span className="badge">{demo.kind}</span>
             </div>
@@ -54,3 +54,4 @@ export default function Home() {
     </div>
   );
 }
+
