@@ -1,21 +1,19 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Demo | kwanek.pl",
+    default: "Wybór demonstracji | kwanek.pl",
     template: "%s | Demo kwanek.pl",
   },
   description:
-    "Wybór demonstracji portfolio kwanek.pl, działające aplikacje webowe do przetestowania.",
+    "Działające aplikacje webowe z portfolio Kwanek, możesz je kliknąć i przetestować samodzielnie.",
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pl">
       <body>{children}</body>
     </html>
   );
 }
-
