@@ -16,14 +16,14 @@ export default function Home() {
         <span className="eyebrow">Demonstracje</span>
         <h1>Wybór demonstracji</h1>
         <p className="lead">
-          Działające aplikacje webowe z portfolio — możesz je kliknąć i przetestować samodzielnie.
+          Działające aplikacje webowe z portfolio, możesz je kliknąć i przetestować samodzielnie.
         </p>
         <p className="count">{DEMOS.length} {DEMOS.length === 1 ? "demo" : "dema"}</p>
       </section>
 
       <main className="grid">
         {DEMOS.map((demo) => (
-          <a key={demo.slug} className="card" href={demo.url ?? `/${demo.slug}`}>
+          <a key={demo.slug} className="card" href={`/${demo.slug}`}>
             <div className="card-head">
               <span className="badge">{demo.kind}</span>
             </div>
@@ -54,4 +54,3 @@ export default function Home() {
     </div>
   );
 }
-

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     template: "%s | Demo kwanek.pl",
   },
   description:
-    "Wybór demonstracji portfolio kwanek.pl — działające aplikacje webowe do przetestowania.",
+    "Wybór demonstracji portfolio kwanek.pl, działające aplikacje webowe do przetestowania.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -18,3 +18,4 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     </html>
   );
 }
+
