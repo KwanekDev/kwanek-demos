@@ -4,12 +4,15 @@ export default function Home() {
   return (
     <div className="page">
       <header className="topbar">
-        <div className="brand">
+        <a className="brand" href="https://kwanek.pl">
           kwanek.pl <span className="separator">/</span> <small className="demo">demo</small>
-        </div>
-        <a className="extlink" href="https://kwanek.pl" target="_blank" rel="noreferrer">
-          kwanek.pl ↗
         </a>
+        <nav className="nav" aria-label="Nawigacja">
+          <a href="https://kwanek.pl/#about">O mnie</a>
+          <a href="https://kwanek.pl/#work">Doświadczenie</a>
+          <a href="https://kwanek.pl/#projects">Projekty</a>
+          <a href="https://kwanek.pl/#contact">Kontakt</a>
+        </nav>
       </header>
 
       <section className="hero">
@@ -23,7 +26,7 @@ export default function Home() {
 
       <main className="grid">
         {DEMOS.map((demo) => (
-          <a key={demo.slug} className="card" href={`/${demo.slug}`}>
+          <a key={demo.slug} className="card" href={demo.url ?? `/${demo.slug}`}>
             <div className="card-head">
               <span className="badge">{demo.kind}</span>
             </div>
@@ -54,3 +57,4 @@ export default function Home() {
     </div>
   );
 }
+
