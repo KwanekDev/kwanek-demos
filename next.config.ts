@@ -1,7 +1,9 @@
+
 import type { NextConfig } from "next";
 
-// Origin produkcyjny demo TMS+CRM (osobny deploy na Vercel).
-const tmsOrigin = process.env.TMS_ORIGIN || "https://demonstracja.kwanek.pl";
+const tmsOrigin =
+  process.env.TMS_ORIGIN ||
+  "https://northstar-logistics-dashboard.vercel.app";
 
 const nextConfig: NextConfig = {
   async rewrites() {
@@ -15,3 +17,4 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
