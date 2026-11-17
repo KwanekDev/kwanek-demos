@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
+        source: "/tms",
+        destination: `${tmsOrigin}/tms/login`,
+      },
+      {
         source: "/tms/:path*",
         destination: `${tmsOrigin}/tms/:path*`,
       },
