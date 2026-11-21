@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const links = [
   { href: "https://kwanek.pl/#about", label: "O mnie" },
@@ -20,6 +20,14 @@ const NAV_CLASS =
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
   return (
     <header className="text-sm py-6 md:px-16 px-6 border-b border-[var(--color-border)] z-30 md:mb-28 mb-10">
       <div className="max-w-6xl mx-auto grid grid-cols-[1fr_auto_1fr] items-center gap-6">
@@ -59,14 +67,17 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="fixed left-0 top-0 z-40 h-full w-full bg-[var(--color-bg)]">
-          <div className="flex items-center justify-between mt-6 px-8">
+        <div className="fixed left-0 top-0 z-40 h-full w-full overflow-y-auto overscroll-contain bg-[var(--color-bg)]">
+          <div className="sticky top-0 z-10 flex items-center justify-between bg-[var(--color-bg)] px-8 py-6">
             <a href="https://kwanek.pl" className="font-display text-2xl font-bold tracking-tight text-[var(--color-fg)]">Kwanek</a>
             <button aria-label="Zamknij menu" onClick={() => setOpen(false)} className="rounded-full border border-[var(--color-border)] bg-[var(--color-bg-alt)] p-2">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
           </div>
-          <nav className="flex flex-col mt-6 pb-safe">
+          <nav className="flex flex-col mt-2 pb-12">
+            <a href="https://kwanek.pl/umow-spotkanie" onClick={() => setOpen(false)} className="mb-5 inline-flex items-center justify-center gap-2 rounded-md border border-[var(--color-border-strong)] px-6 py-3.5 text-base font-semibold tracking-tight text-[var(--color-fg)] transition-colors hover:bg-[var(--color-fg)] hover:text-[var(--color-bg)]">
+              Umów spotkanie <span aria-hidden="true">→</span>
+            </a>
             {links.map((l) => (
               <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="flex items-center justify-between font-display font-semibold text-lg border-b border-[var(--color-border)] p-6 group">
                 <span>{l.label}</span><span className="text-[var(--color-accent)]">→</span>
@@ -78,9 +89,6 @@ export function Header() {
                 <span>{l.label}</span><span className="text-[var(--color-accent)]">→</span>
               </a>
             ))}
-            <a href="https://kwanek.pl/umow-spotkanie" onClick={() => setOpen(false)} className="flex items-center justify-between font-display font-semibold text-lg border-b border-[var(--color-border)] p-6 group">
-              <span>Umów spotkanie</span><span className="text-[var(--color-accent)]">→</span>
-            </a>
           </nav>
         </div>
       )}
