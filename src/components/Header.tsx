@@ -56,7 +56,7 @@ export function Header() {
           </ul>
         </nav>
 
-        <div className="flex items-center justify-self-end gap-x-4">
+        <div className="col-start-3 flex items-center justify-self-end gap-x-4">
           <a href="https://kwanek.pl/umow-spotkanie" className="hidden md:inline-flex items-center gap-2 border border-[var(--color-border-strong)] px-4 py-2 text-sm font-medium tracking-tight text-[var(--color-fg)] transition-colors hover:bg-[var(--color-fg)] hover:text-[var(--color-bg)]">
             Umów spotkanie <span aria-hidden="true">→</span>
           </a>
