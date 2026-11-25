@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
+import { Schibsted_Grotesk } from "next/font/google";
 import "./globals.css";
+
+const schibsted = Schibsted_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-schibsted",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
-    default: "Wybór demonstracji | kwanek.pl",
-    template: "%s | Demo kwanek.pl",
+    default: "Wybór demonstracji | Kwanek",
+    template: "%s | Demo Kwanek",
   },
-  description:
-    "Działające aplikacje webowe z portfolio Kwanek, możesz je kliknąć i przetestować samodzielnie.",
+  description: "Działające aplikacje webowe Kwanek — przetestuj je samodzielnie.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -21,8 +28,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pl">
+    <html lang="pl" className={schibsted.variable}>
       <body>{children}</body>
     </html>
   );
 }
+

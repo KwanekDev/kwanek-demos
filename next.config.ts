@@ -6,6 +6,9 @@ const tmsOrigin =
   "https://northstar-logistics-dashboard.vercel.app";
 
 const nextConfig: NextConfig = {
+  turbopack: {
+    root: process.cwd(),
+  },
   async rewrites() {
     return [
       {

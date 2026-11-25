@@ -7,9 +7,34 @@ export type Demo = {
   stack: string[];
   highlights: string[];
   url: string;
+  originEnv?: string;
 };
 
+export function demoUrl(d: Demo): string {
+  if (d.originEnv && process.env[d.originEnv]) {
+    return process.env[d.originEnv] as string;
+  }
+  return d.url;
+}
+
 export const demos: Demo[] = [
+  {
+    slug: "przeglady",
+    title: "Panel przeglądów i serwisu budynków",
+    kind: "Panel terenowy",
+    industry: "Serwis budynków / ppoż",
+    description:
+      "Ewidencja urządzeń, terminy przeglądów, zlecenia terenowe z checklistą, protokoły PDF i portal klienta — panel dla firm serwisowych.",
+    stack: ["Next.js", "TypeScript", "Tailwind"],
+    highlights: [
+      "Pulpit zgodności: przekroczone i nadchodzące terminy",
+      "Zadania cykliczne generowane z interwałów przeglądów",
+      "Protokół okresowego przeglądu do wydruku / PDF",
+      "Trzy role: administrator, serwisant i klient",
+    ],
+    url: "https://demo.kwanek.pl/przeglady",
+    originEnv: "NEXT_PUBLIC_DEMO_PRSZEGLADY_ORIGIN",
+  },
   {
     slug: "tms",
     title: "TMS+CRM",

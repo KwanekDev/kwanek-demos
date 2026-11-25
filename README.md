@@ -1,40 +1,35 @@
-# kwanek-demos — hub „Wybór demonstracji”
+# kwanek-demos — hub demonstracji
 
-Hub demonstracji dostępny pod `demo.kwanek.pl`. Zwiera listę działających aplikacji webowych z portfolio `kwanek.pl`; każde demo jest osobnym deployem, a hub przekierowuje ścieżki (np. `/tms/*`) do właściwej aplikacji.
+Ten serwis jest **tylko hubem**: katalog działających aplikacji (demo) Kwanek.
+Każde demo żyje w osobnym repozytorium i jest wdrażane osobno.
 
-## Struktura (wg schematu)
+## Architektura
 
-```
-kwanek.pl                    → portfolio (repo: strona-portfolio)
-└─ demo.kwanek.pl            → ten hub (repo: kwanek-demos)
-   └─ „Wybór demonstracji”   → strona główna huba
-      └─ /tms               → demo TMS+CRM (repo: northstar-logistics-dashboard)
-         └─ podstrony (Pulpit, Transporty, Flota, Finanse, Raporty, Terminarz)
-            └─ funkcjonalności
-```
+- **Hub (to repo)** — strona z kafelkami: tytuł, opis, stack, obrazek, link.
+- **Demo** — osobne repo Next.js (np. `kwanek-demo-przeglady`, `northstar-logistics-dashboard`), deployowane niezależnie (Vercel).
 
-## Routing ścieżkowy
+Hub nigdy nie zawiera kodu aplikacji demo — tylko ich **konfigurację** w `src/content/demos.ts`.
 
-`next.config.ts` ustawia rewrites: `/tms/:path*` → `${TMS_ORIGIN}/tms/:path*` (zachowując prefiks `/tms`). Domyślnie `TMS_ORIGIN=https://northstar-logistics-dashboard.vercel.app` (czysty URL Vercel, bez własnej domeny). Dzięki temu URL-e są ścieżkowe (`demo.kwanek.pl/tms/...`), a TMS działa jako osobny deploy.
+## Jak dodać nowe demo
 
-## Uruchomienie
+1. Utwórz osobne repo z aplikacją (Next.js) i wdróż je na Vercel.
+2. W `src/content/demos.ts` dodaj wpis:
+   - `slug` — unikalny identyfikator,
+   - `title`, `kind`, `industry`, `description`, `stack`, `highlights` — dane kafelka,
+   - `url` — adres wdrożonego demo,
+   - `originEnv` (opcjonalnie) — nazwa zmiennej środowiskowej `NEXT_PUBLIC_...`, która nadpisze `url` w środowisku deweloperskim (podgląd lokalny).
+3. Dodaj obrazek do `public/images/hub-<slug>.jpg/png` i podepnij go w mapie `media` w `src/app/page.tsx`.
+4. Commit i push huba.
 
-```bash
-npm install
-npm run dev      # http://localhost:3000 (hub), http://localhost:3000/tms (demo przez proxy)
-npm run build
-npm start
-```
+## Development lokalny
 
-## Deploy na Vercel i DNS
+Ustaw zmienne nadpisujące, np.:
 
-1. Utwórz projekt na Vercel i połącz z tym repozytorium.
-2. W ustawieniach domeny projektu dodaj `demo.kwanek.pl` i ustaw jako domenę produkcyjną.
-3. W DNS `kwanek.pl` wskaż `demo.kwanek.pl` na Vercel (rekord CNAME skonfigurowany przez Vercel).
-4. Zmienna środowiskowa `TMS_ORIGIN` pozostaje domyślna lub wskazuje aktualny origin TMS.
-5. Origin demo TMS+CRM to czysty URL Vercel (`https://northstar-logistics-dashboard.vercel.app`); domena `demonstracja.kwanek.pl` nie jest już używana.
+- `NEXT_PUBLIC_DEMO_PRSZEGLADY_ORIGIN=http://localhost:3210`
+- `TMS_ORIGIN=http://localhost:3215` (istniejący rewrite w `next.config.ts`)
 
-## Dodawanie kolejnych demo
+Wtedy kafelki otwierają lokalne wersje demo zamiast produkcyjnych URL-i.
 
-1. Dopisz wpis w `src/content/demos.ts` (slug, nazwa, opis, stack, najważniejsze funkcje).
-2. Dodaj rewrite w `next.config.ts` dla ścieżki `/slug/:path*` → origin danego demo.
+## Szablon repo dla nowego demo
+
+Skopiuj `kwanek-demo-przeglady` jako punkt startowy (ma już: globals.css, layout z fontem, struktura app/, public/). Zmień nazwę, potem rozwijaj aplikację.
