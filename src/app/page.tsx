@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 const media: Record<string, string> = {
-  przeglady: "/images/hub-planning.jpg",
+  przeglady: "/images/hub-przeglady.png",
   tms: "/images/hub-tms.png",
 };
 
