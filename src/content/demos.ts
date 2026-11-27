@@ -51,19 +51,4 @@ export const demos: Demo[] = [
     ],
     url: "https://demo.kwanek.pl/tms",
   },
-  {
-    slug: "tms-klient",
-    title: "Strefa klienta TMS",
-    kind: "Portal klienta",
-    industry: "Transport / logistyka",
-    description:
-      "Portal klienta systemu TMS: śledzenie przesyłek po kodzie bez logowania oraz konto klienta z pełną listą transportów i szczegółami zleceń.",
-    stack: ["Next.js", "TypeScript", "Tailwind"],
-    highlights: [
-      "Publiczne śledzenie po kodzie TRK-XXXX",
-      "Konto demo klienta z listą transportów",
-      "Szczegóły zlecenia z osią czasu",
-    ],
-    url: "https://demo.kwanek.pl/tms/klient",
-  },
 ];

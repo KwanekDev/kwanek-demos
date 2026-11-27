@@ -13,7 +13,6 @@ export const metadata: Metadata = {
 const media: Record<string, string> = {
   przeglady: "/images/hub-planning.jpg",
   tms: "/images/hub-tms.png",
-  "tms-klient": "/images/hub-tms.png",
 };
 
 export default function DemosPage() {
