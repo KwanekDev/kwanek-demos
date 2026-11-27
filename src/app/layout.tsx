@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     default: "Wybór demonstracji | Kwanek",
     template: "%s | Demo Kwanek",
   },
-  description: "Działające aplikacje webowe Kwanek — przetestuj je samodzielnie.",
+  description: "Działające aplikacje webowe Kwanek - przetestuj je samodzielnie.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },

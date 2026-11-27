@@ -7,7 +7,7 @@ import { demoUrl } from "@/content/demos";
 
 export const metadata: Metadata = {
   title: "Wybór demonstracji",
-  description: "Działające aplikacje webowe Kwanek — przetestuj je samodzielnie.",
+  description: "Działające aplikacje webowe Kwanek - przetestuj je samodzielnie.",
 };
 
 const media: Record<string, string> = {
@@ -28,7 +28,7 @@ export default function DemosPage() {
               Wybór demonstracji.
             </h1>
             <p className="mt-5 max-w-2xl text-lg text-white/85">
-              Działające aplikacje webowe — kliknij i przetestuj każdą samodzielnie.
+              Działające aplikacje webowe - kliknij i przetestuj każdą samodzielnie.
             </p>
           </div>
         </section>

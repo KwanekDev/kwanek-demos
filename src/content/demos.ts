@@ -24,7 +24,7 @@ export const demos: Demo[] = [
     kind: "Panel terenowy",
     industry: "Serwis budynków / ppoż",
     description:
-      "Ewidencja urządzeń, terminy przeglądów, zlecenia terenowe z checklistą, protokoły PDF i portal klienta — panel dla firm serwisowych.",
+      "Ewidencja urządzeń, terminy przeglądów, zlecenia terenowe z checklistą, protokoły PDF i portal klienta - panel dla firm serwisowych.",
     stack: ["Next.js", "TypeScript", "Tailwind"],
     highlights: [
       "Pulpit zgodności: przekroczone i nadchodzące terminy",
